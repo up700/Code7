@@ -1,6 +1,6 @@
 type: "vllm"
 args:
-  name: "qwen-7b-iopo"
+  name: "qwen2_7b_trace_iopo"
   model_path: "xxx"
   api_key: "EMPTY"
   api_base: "http://localhost:8000/v1"
