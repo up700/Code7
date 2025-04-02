@@ -18,3 +18,15 @@ cd Method-IOPO/
 pip install -e ".[torch,metrics]"
 llamafactory-cli train examples/qwen2_lora_iopo.yaml
 ```
+
+## How to evaluate
+First, launch vllm for deploying the trained model:
+```
+python -m vllm.entrypoints.openai.api_server --served-model-name qwen2_7b_trace_iopo --model <trained_model_saved_path> --tensor-parallel-size 4
+```
+Then, run the evaluation script:
+```
+cd Eval_script/
+bash evaluate_all_task_for_model.sh <eval_results_output_path> "models/vllm_qwen2_7b_trace_iopo.yaml" "config/evaluator-trace-gpt-gpt.yaml"
+```
+
